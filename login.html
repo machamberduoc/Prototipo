@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        .login {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .login h1 {
+            margin-bottom: 20px;
+            font-size: 10;
+            color: black;
+        }
+    
+        .login input[type="email"],
+        .login input[type="password"] {
+            width: 100%;           
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid grey;
+            box-sizing: border-box;
+        }
+        .login button {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            font-size: 10px;
+        }
+        .login a {
+            color: blue;
+            text-decoration:none ;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>Login</h1>
+        <form action="dashboard.html">
+            <input type="email" placeholder="correo electronico" required>
+            <input type="password" placeholder="contraseña" required>
+            <button type="submit">iniciar session</button>
+        </form>
+        <p>no tienes cuenta <a href="signup.html">registrate</a></p>
+    </div>
+</body>
+</html>
