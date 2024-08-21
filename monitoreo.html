@@ -86,7 +86,25 @@
             margin-right: 10px;
             color: black;
         }
-        
+        .squares {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px);
+            padding-left: 80px;
+            box-sizing: border-box;
+        }
+
+        .square {
+            width: 230px;
+            height: 230px;
+            background-color: grey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -100,16 +118,18 @@
         <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
 
-        
-
     <div class="corr"> 
         <div class="head">
             <img src="img/perfil.png" alt="">
             <span>correo@correo.com</span>
         </div>
+        <div class="squares">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
     </div>
-
-  
 
 </body>
 </html>
