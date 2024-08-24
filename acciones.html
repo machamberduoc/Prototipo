@@ -1,287 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acciones</title>
+    <!-- Vinculación de Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>Document</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: white;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .slide {
-            width: 250px;
-            background-color: #ffc107;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            color: #6c757d;
-        }
-        .slide h2 {
-            margin-bottom: 20px;
-        }
-        .slide a {
-            padding: 15px 10px;
-            margin: 5px 0;
-            color: white;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .slide a:hover {
-            background-color: #6c757d;
-        }
-        .slide a.monit {
-            background-color: #ffc107;
-        }
-        .slide a.monit:hover {
-            background-color: #6c757d;
-        }
-        .slide a.logout {
-            margin-top: auto;
-            background-color: #ffc107;
-        }
-        .slide a.logout:hover {
-            background-color: #6c757d;
-        }
-        .corr {
-            flex: 1;
-            padding: 100px;
+        .content-area {
+            max-height: calc(100vh - 56px); /* Ajustar según el tamaño del encabezado */
             overflow-y: auto;
         }
-        .corr h1 {
-            margin-top: 0;
-            font-size: 10px;
-            color: white;
+        .action-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .corr p {
-            color: #6c757d;
+        .action-table th, .action-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
         }
-        .head {
-            background-color: white;
-            color: white;
-            padding: 15px;
-            text-align: right;
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 290px;
-            z-index: 1000;
-            display: flex;
-            align-items:  center;
-            justify-content:  flex-end;
+        .action-table th {
+            background-color: #f4f4f4;
         }
-        .head img {
-            vertical-align: middle;
-            border-radius:  50%;
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
+        .form-section {
+            margin-bottom: 2rem;
         }
-        .head span{
-            font-size: 14px;
-            margin-right: 10px;
-            color: #6c757d;
+        .table-container {
+            overflow-x: auto;
         }
-        .corr i {
-            color: #6c757d;
-            padding: 10px;
+        .alert {
+            display: none; /* Ocultar por defecto */
         }
     </style>
 </head>
-<body>
-    <div class="slide">
-        <h2>ServPred</h2>
-        <a href="monitoreo.html" class="monit">Monitoreo</a>
-        <a href="acciones.html">Acciones</a>
-        <a href="auditoria.html">Auditoria</a>
-        <a href="reportes.html">Reportes</a>
-        <a href="recomendaciones.html">Recomendaciones</a>
-        <a href="login.html" class="logout">Cerrar Sesión</a>
+<body class="d-flex vh-100 overflow-hidden">
+    <!-- Barra lateral -->
+    <div class="bg-light border-end d-flex flex-column p-4 sidebar">
+        <h2 class="mb-4">Logo <a href="dashboard.html"></a></h2>
+        <a href="monitoreo.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Monitoreo</a>
+        <a href="acciones.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Acciones</a>
+        <a href="auditoria.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Auditoría</a>
+        <a href="reportes.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Reportes</a>
+        <a href="recomendaciones.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Recomendaciones</a>
+        <!-- Enlace de Cerrar Sesión al final del sidebar -->
+        <div class="mt-auto">
+            <a href="login.html" class="d-block p-2 text-decoration-none text-dark">Cerrar Sesión</a>
+        </div>
     </div>
 
-    <div class="corr"> 
-        <div class="head">
-            <i class="fas fa-envelope"></i>
-            <span>correo@correo.com</span>
+    <div class="flex-grow-1 d-flex flex-column">
+        <!-- Barra de encabezado -->
+        <div class="d-flex justify-content-end align-items-center bg-light p-3 border-bottom">
+            <i class="fas fa-envelope" style="font-size: 0.9rem;"></i>
+            <a href="mailto:correo@correo.com" class="ms-1 me-3 text-dark" style="font-size: 0.9rem; text-decoration: none;">correo@correo.com</a>
         </div>
-            <!-- Contenido principal -->
-            <div class="content-area p-4 pt-5 mt-5">
-                <h1>Gestión de Acciones</h1>
-    
-                <!-- Sección para Definir Acciones Automáticas -->
-                <div class="form-section">
-                    <h2>Definir Acciones Automáticas</h2>
-                    <form id="actionForm">
-                        <div class="mb-3">
-                            <label for="actionName" class="form-label">Nombre de la Acción</label>
-                            <input type="text" class="form-control" id="actionName" placeholder="Nombre de la acción" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="actionTrigger" class="form-label">Disparador</label>
-                            <select class="form-select" id="actionTrigger" required>
-                                <option value="">Seleccionar...</option>
-                                <option value="threshold">Umbral de Uso</option>
-                                <option value="event">Evento Específico</option>
-                                <option value="schedule">Programado</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="actionDetails" class="form-label">Detalles de la Acción</label>
-                            <textarea class="form-control" id="actionDetails" rows="4" placeholder="Detalles de la acción" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-secondary">Agregar Acción</button>
-                        <div class="alert alert-success mt-3" id="actionSuccess">Acción agregada exitosamente.</div>
-                        <div class="alert alert-danger mt-3" id="actionError">Error al agregar la acción. Por favor, intente de nuevo.</div>
-                    </form>
-                </div>
-    
-                <!-- Historial y Monitoreo de Acciones -->
-                <div class="form-section">
-                    <h2>Historial y Monitoreo de Acciones</h2>
-                    <p>Revisa el historial de acciones automáticas y su estado actual. Puedes visualizar logs y resultados de las acciones ejecutadas.</p>
-                    <form id="filterHistoryForm">
-                        <div class="mb-3">
-                            <label for="historyFilterDate" class="form-label">Fecha</label>
-                            <input type="date" class="form-control" id="historyFilterDate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="historyFilterStatus" class="form-label">Estado</label>
-                            <select class="form-select" id="historyFilterStatus">
-                                <option value="">Todos</option>
-                                <option value="success">Éxito</option>
-                                <option value="failure">Fallido</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-secondary">Filtrar</button>
-                    </form>
-                </div>
-    
-                <!-- Tabla de acciones automáticas -->
-                <div class="form-section">
-                    <h2>Acciones Automáticas</h2>
-                    <div class="table-container">
-                        <table class="action-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Disparador</th>
-                                    <th>Detalles</th>
-                                    <th>Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody id="actionTableBody">
-                                <!-- Aquí se agregarán las filas de acciones dinámicamente -->
-                                <!-- Esta tabla se llenará con datos desde la base de datos -->
-                            </tbody>
-                        </table>
+        
+        <!-- Contenido principal -->
+        <div class="content-area p-4 pt-5 mt-5">
+            <h1>Gestión de Acciones</h1>
+
+            <!-- Sección para Definir Acciones Automáticas -->
+            <div class="form-section">
+                <h2>Definir Acciones Automáticas</h2>
+                <form id="actionForm">
+                    <div class="mb-3">
+                        <label for="actionName" class="form-label">Nombre de la Acción</label>
+                        <input type="text" class="form-control" id="actionName" placeholder="Nombre de la acción" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="actionTrigger" class="form-label">Disparador</label>
+                        <select class="form-select" id="actionTrigger" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="threshold">Umbral de Uso</option>
+                            <option value="event">Evento Específico</option>
+                            <option value="schedule">Programado</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="actionDetails" class="form-label">Detalles de la Acción</label>
+                        <textarea class="form-control" id="actionDetails" rows="4" placeholder="Detalles de la acción" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar Acción</button>
+                    <div class="alert alert-success mt-3" id="actionSuccess">Acción agregada exitosamente.</div>
+                    <div class="alert alert-danger mt-3" id="actionError">Error al agregar la acción. Por favor, intente de nuevo.</div>
+                </form>
+            </div>
+
+            <!-- Historial y Monitoreo de Acciones -->
+            <div class="form-section">
+                <h2>Historial y Monitoreo de Acciones</h2>
+                <p>Revisa el historial de acciones automáticas y su estado actual. Puedes visualizar logs y resultados de las acciones ejecutadas.</p>
+                <form id="filterHistoryForm">
+                    <div class="mb-3">
+                        <label for="historyFilterDate" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="historyFilterDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="historyFilterStatus" class="form-label">Estado</label>
+                        <select class="form-select" id="historyFilterStatus">
+                            <option value="">Todos</option>
+                            <option value="success">Éxito</option>
+                            <option value="failure">Fallido</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
+            </div>
+
+            <!-- Tabla de acciones automáticas -->
+            <div class="form-section">
+                <h2>Acciones Automáticas</h2>
+                <div class="table-container">
+                    <table class="action-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Disparador</th>
+                                <th>Detalles</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="actionTableBody">
+                            <!-- Aquí se agregarán las filas de acciones dinámicamente -->
+                            <!-- Esta tabla se llenará con datos desde la base de datos -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    
-        <!-- Vinculación de Bootstrap JS (opcional) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            // Manejo de formulario de acciones automáticas
-            document.getElementById('actionForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                var name = document.getElementById('actionName').value;
-                var trigger = document.getElementById('actionTrigger').value;
-                var details = document.getElementById('actionDetails').value;
-    
-                if (name && trigger && details) {
-                    // Simular éxito en la adición de la acción
-                    document.getElementById('actionSuccess').style.display = 'block';
-                    document.getElementById('actionError').style.display = 'none';
-                    
-                    // Aquí deberías hacer una solicitud al servidor para guardar la acción en la base de datos
-                    fetch('/api/actions', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            name: name,
-                            trigger: trigger,
-                            details: details
-                        })
-                    }).then(response => {
-                        if (response.ok) {
-                            // Actualizar la tabla de acciones
-                            loadActions();
-                        } else {
-                            throw new Error('Error al guardar la acción');
-                        }
-                    }).catch(error => {
-                        console.error('Error:', error);
-                        document.getElementById('actionSuccess').style.display = 'none';
-                        document.getElementById('actionError').style.display = 'block';
-                    });
-                }
-            });
-    
-            // Manejo de formulario de historial
-            document.getElementById('filterHistoryForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                var date = document.getElementById('historyFilterDate').value;
-                var status = document.getElementById('historyFilterStatus').value;
-    
-                // Aquí podrías agregar código para filtrar el historial de acciones
-                fetch(`/api/history?date=${date}&status=${status}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Actualizar la tabla con el historial filtrado
-                        updateHistoryTable(data);
-                    });
-            });
-    
-            // Función para cargar las acciones desde la base de datos
-            function loadActions() {
-                fetch('/api/actions')
-                    .then(response => response.json())
-                    .then(data => {
-                        var tbody = document.getElementById('actionTableBody');
-                        tbody.innerHTML = '';
-                        data.forEach(action => {
-                            var row = `<tr>
-                                <td>${action.id}</td>
-                                <td>${action.name}</td>
-                                <td>${action.trigger}</td>
-                                <td>${action.details}</td>
-                                <td>${action.status}</td>
-                            </tr>`;
-                            tbody.innerHTML += row;
-                        });
-                    });
-            }
-    
-            // Función para actualizar la tabla de historial
-            function updateHistoryTable(data) {
-                var tbody = document.getElementById('actionTableBody');
-                tbody.innerHTML = '';
-                data.forEach(record => {
-                    var row = `<tr>
-                        <td>${record.id}</td>
-                        <td>${record.name}</td>
-                        <td>${record.trigger}</td>
-                        <td>${record.details}</td>
-                        <td>${record.status}</td>
-                    </tr>`;
-                    tbody.innerHTML += row;
+    </div>
+
+    <!-- Vinculación de Bootstrap JS (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Manejo de formulario de acciones automáticas
+        document.getElementById('actionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var name = document.getElementById('actionName').value;
+            var trigger = document.getElementById('actionTrigger').value;
+            var details = document.getElementById('actionDetails').value;
+
+            if (name && trigger && details) {
+                // Simular éxito en la adición de la acción
+                document.getElementById('actionSuccess').style.display = 'block';
+                document.getElementById('actionError').style.display = 'none';
+                
+                // Aquí deberías hacer una solicitud al servidor para guardar la acción en la base de datos
+                fetch('/api/actions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        trigger: trigger,
+                        details: details
+                    })
+                }).then(response => {
+                    if (response.ok) {
+                        // Actualizar la tabla de acciones
+                        loadActions();
+                    } else {
+                        throw new Error('Error al guardar la acción');
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('actionSuccess').style.display = 'none';
+                    document.getElementById('actionError').style.display = 'block';
                 });
             }
-    
-            // Cargar acciones al inicio
-            loadActions();
-        </script>
-    </div>
+        });
+
+        // Manejo de formulario de historial
+        document.getElementById('filterHistoryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var date = document.getElementById('historyFilterDate').value;
+            var status = document.getElementById('historyFilterStatus').value;
+
+            // Aquí podrías agregar código para filtrar el historial de acciones
+            fetch(`/api/history?date=${date}&status=${status}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Actualizar la tabla con el historial filtrado
+                    updateHistoryTable(data);
+                });
+        });
+
+        // Función para cargar las acciones desde la base de datos
+        function loadActions() {
+            fetch('/api/actions')
+                .then(response => response.json())
+                .then(data => {
+                    var tbody = document.getElementById('actionTableBody');
+                    tbody.innerHTML = '';
+                    data.forEach(action => {
+                        var row = `<tr>
+                            <td>${action.id}</td>
+                            <td>${action.name}</td>
+                            <td>${action.trigger}</td>
+                            <td>${action.details}</td>
+                            <td>${action.status}</td>
+                        </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                });
+        }
+
+        // Función para actualizar la tabla de historial
+        function updateHistoryTable(data) {
+            var tbody = document.getElementById('actionTableBody');
+            tbody.innerHTML = '';
+            data.forEach(record => {
+                var row = `<tr>
+                    <td>${record.id}</td>
+                    <td>${record.name}</td>
+                    <td>${record.trigger}</td>
+                    <td>${record.details}</td>
+                    <td>${record.status}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Cargar acciones al inicio
+        loadActions();
+    </script>
 </body>
 </html>
+
+
