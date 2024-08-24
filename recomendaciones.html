@@ -105,34 +105,29 @@
         <a href="recomendaciones.html">Recomendaciones</a>
         <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
-
     <div class="corr"> 
         <div class="head">
             <i class="fas fa-envelope"></i>
             <span>correo@correo.com</span>
         </div>
-        <!-- Contenido desplazable -->
         <div class="content-area">
             <div class="container mt-5">
                 <h2 class="mb-4" style="color: #6c757d;">Recomendaciones ServPred</h2>
-                <!-- Botón para cargar el archivo JSON -->
                 <div class="mb-5">
                     <button class="btn btn-secondary" onclick="loadRecommendations()">Recomendaciones</button>
                 </div>
-                <!-- Contenedor de tarjetas para mostrar las recomendaciones -->
                 <div class="card-container" id="recommendationsContainer">
-                    <!-- Las recomendaciones se cargarán aquí -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Vinculación de Bootstrap JS (opcional) -->
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simulación de carga de recomendaciones desde un archivo JSON
+     
         function loadRecommendations() {
-            // Simulación de datos JSON (en un entorno real, esto vendría del backend o un archivo)
+         
             const jsonData = [
                 {
                     "issue": "Espacio en disco bajo",
@@ -153,9 +148,9 @@
                 }
             ];
                 
-            // Cargar las recomendaciones en la interfaz
+         
             const container = document.getElementById('recommendationsContainer');
-            container.innerHTML = ''; // Limpiar contenedor
+            container.innerHTML = ''; 
 
             jsonData.forEach(item => {
                 const card = document.createElement('div');
