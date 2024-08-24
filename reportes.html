@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Reportes de Espacio en Disco</title>
-    <!-- Vinculación de Bootstrap CSS -->
+  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
@@ -23,20 +23,20 @@
             overflow-y: auto;
         }
         .content {
-            margin-left: 250px; /* Deja espacio para la barra lateral */
+            margin-left: 250px;
             padding: 20px;
         }
         .fixed-header {
             position: fixed;
             top: 0;
             right: 0;
-            left: 250px; /* Igualar al ancho de la barra lateral */
+            left: 250px; 
             z-index: 1000;
             background-color: #f8f9fa;
             border-bottom: 1px solid #dee2e6;
         }
         .mt-5 {
-            margin-top: 4rem; /* Ajusta el margen superior para el contenido desplazable */
+            margin-top: 4rem; 
         }
         .chart-container {
             height: 300px;
@@ -56,7 +56,7 @@
 </head>
 <body class="d-flex flex-column">
 
-    <!-- Barra lateral -->
+
     <div class="sidebar d-flex flex-column p-4">
         <h2 class="mb-4">Logo <a href="dashboard.html"></a></h2>
         <a href="monitoreo.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Monitoreo</a>
@@ -64,30 +64,25 @@
         <a href="auditoria.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Auditoría</a>
         <a href="reportes.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Reportes</a>
         <a href="recomendaciones.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Recomendaciones</a>
-        <!-- Enlace de Cerrar Sesión al final del sidebar -->
+ 
         <div class="mt-auto">
             <a href="login.html" class="d-block p-2 text-decoration-none text-dark">Cerrar Sesión</a>
         </div>
     </div>
 
-    <!-- Contenido principal -->
+
     <div class="content flex-grow-1">
-        <!-- Barra de encabezado -->
         <div class="d-flex justify-content-end align-items-center fixed-header p-3">
             <i class="fas fa-envelope" style="font-size: 0.9rem;"></i>
             <a href="mailto:correo@correo.com" class="ms-1 me-3 text-dark" style="font-size: 0.9rem; text-decoration: none;">correo@correo.com</a>
         </div>
 
-        <!-- Contenido desplazable -->
         <div class="pt-5 mt-5">
-            <!-- Sección de Reportes -->
+           
             <div class="container">
                 <h1 class="mb-4">Reportes de Espacio en Disco</h1>
-
-                <!-- Botón para Exportar Información en PDF -->
                 <button class="btn btn-primary btn-export" onclick="exportToPDF()">Exportar Información en PDF</button>
 
-                <!-- Filtros -->
                 <div class="row mb-4">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -117,9 +112,7 @@
                     </div>
                 </div>
 
-                <!-- Gráficos y Tablas -->
                 <div class="row">
-                    <!-- Gráfico de Espacio en Disco Total -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body">
@@ -131,7 +124,6 @@
                         </div>
                     </div>
 
-                    <!-- Gráfico de Espacio Usado vs Libre -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body">
@@ -144,7 +136,6 @@
                     </div>
                 </div>
 
-                <!-- Tabla de Espacio en Disco -->
                 <div class="card mb-4">
                     <div class="card-body table-container">
                         <h5 class="card-title">Tabla de Espacio en Disco</h5>
@@ -160,7 +151,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Aquí puedes agregar filas dinámicamente usando JavaScript -->
                                 <tr>
                                     <td>Servidor 1</td>
                                     <td>Disco A</td>
@@ -177,13 +167,13 @@
                                     <td>400 GB</td>
                                     <td>2024-08-22</td>
                                 </tr>
-                                <!-- Más filas aquí -->
+                               
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Registrar Reporte de Desperfectos -->
+               
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">Registrar Reporte de Desperfectos</h5>
@@ -208,11 +198,11 @@
         </div>
     </div>
 
-    <!-- Vinculación de JavaScript -->
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         window.onload = function() {
-            // Gráfico de Espacio en Disco Total
+         
             var ctx1 = document.getElementById('chart1').getContext('2d');
             var chart1 = new Chart(ctx1, {
                 type: 'bar',
@@ -236,7 +226,7 @@
                 }
             });
 
-            // Gráfico de Espacio Usado vs Libre
+          
             var ctx2 = document.getElementById('chart2').getContext('2d');
             var chart2 = new Chart(ctx2, {
                 type: 'pie',
@@ -263,7 +253,7 @@
         };
 
         function exportToPDF() {
-            // Aquí puedes implementar la función para exportar a PDF
+           
             alert('Función para exportar a PDF aún no implementada.');
         }
     </script>
