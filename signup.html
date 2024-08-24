@@ -1,16 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
-    <!-- Vinculación de Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        .signup {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .signup h1 {
+            margin-bottom: 20px;
+            font-size: 10;
+            color: black;
+        }
+        .signup input[type="name"],
+        .signup input[type="email"],
+        .signup input[type="password"],
+        .signup input[type="password"] {
+            width: 100%;           
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid grey;
+            box-sizing: border-box;
+        }
+        .signup button {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            font-size: 10px;
+        }
+        .signup a {
+            color: blue;
+            text-decoration:none ;
+        }
+
+    </style>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100 bg-light">
 
     <div class="card p-4 shadow-sm" style="width: 100%; max-width: 400px;">
-        <h1 class="text-center mb-4">Registrar</h1>
+        <h1 class="text-center mb-4" style="color: #6c757d;">ServPred</h1>
         <form action="login.html">
             <div class="mb-3">
                 <input type="text" class="form-control" placeholder="Nombre" required>
@@ -24,7 +69,7 @@
             <div class="mb-3">
                 <input type="password" class="form-control" placeholder="Repetir Contraseña" required>
             </div>
-            <button type="submit" class="btn btn-dark w-100">Registrar</button>
+            <button type="submit" class="btn btn-secondary w-100">Registrar</button>
         </form>
     </div>
 

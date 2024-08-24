@@ -1,64 +1,127 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- Vinculación de Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
     <style>
-        .sidebar {
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide {
             width: 250px;
+            background-color: #ffc107;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: #6c757d;
         }
-        .content {
-            padding-top: 100px;
-            padding-left: 20px;
-            padding-right: 20px;
+        .slide h2 {
+            margin-bottom: 20px;
         }
-        .welcome-section {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        .slide a {
+            padding: 15px 10px;
+            margin: 5px 0;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.9s;
+        }
+        .slide a:hover {
+            background-color: #6c757d;
+        }
+        .slide a.monit {
+            background-color: #ffc107;
+        }
+        .slide a.monit:hover {
+            background-color: #6c757d;
+        }
+        .slide a.logout {
+            margin-top: auto;
+            background-color: #ffc107;
+        }
+        .slide a.logout:hover {
+            background-color: #6c757d;
+        }
+        .corr {
+            flex: 1;
+            padding: 100px;
+            overflow-y: auto;
+        }
+        .corr i { 
+            color: #6c757d;
+            padding: 10px;
+        }
+        .corr h1 {
+            margin-top: 0;
+            font-size: 40px;
+            color: #6c757d;
+        }
+        .corr p {
+            color: #6c757d;
+        }
+        .head {
+            background-color: white;
+            color: white;
+            padding: 15px;
+            text-align: right;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 290px;
+            z-index: 1000;
+            display: flex;
+            align-items:  center;
+            justify-content:  flex-end;
+        }
+        .head img {
+            vertical-align: middle;
+            border-radius:  50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .head span{
+            font-size: 14px;
+            margin-right: 10px;
+            color: #6c757d;
         }
     </style>
 </head>
-<body class="d-flex vh-100 overflow-hidden">
-    
-    <!-- Barra lateral -->
-    <div class="bg-light border-end d-flex flex-column p-4 sidebar">
-        <h2 class="mb-4">Logo <a href="dashboard.html"></a></h2>
-        <a href="monitoreo.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Monitoreo</a>
-        <a href="acciones.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Acciones</a>
-        <a href="auditoria.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Auditoría</a>
-        <a href="reportes.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Reportes</a>
-        <a href="recomendaciones.html" class="d-block p-2 mb-2 text-decoration-none text-dark">Recomendaciones</a>
-        <!-- Enlace de Cerrar Sesión al final del sidebar -->
-        <div class="mt-auto">
-            <a href="login.html" class="d-block p-2 text-decoration-none text-dark">Cerrar Sesión</a>
-        </div>
+<body>
+    <div class="slide">
+        <h2>ServPred</h2>
+        <a href="dashboard.html">Inicio</a>
+        <a href="menu.html" class="monit">Menu</a>
+        <a href="monitoreo.html">Monitoreo</a>
+        <a href="auditoria.html">Auditoria</a>
+        <a href="analisisdatos.html">Analisis de datos</a>
+        <a href="recomendaciones.html">Recomendaciones</a>
+        <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
-
-    <!-- Contenido principal -->
-    <div class="flex-grow-1 p-4">
-        <!-- Barra de encabezado -->
-        <div class="d-flex justify-content-end align-items-center bg-light p-3 border-bottom" style="position: fixed; top: 0; right: 0; left: 250px; z-index: 1000;">
-            <i class="fas fa-envelope" style="font-size: 0.9rem;"></i>
-            <a href="mailto:correo@correo.com" class="ms-1 me-3 text-dark" style="font-size: 0.9rem; text-decoration: none;">correo@correo.com</a>
+ 
+    <div class="corr"> 
+        <div class="head">
+            <i class="fas fa-envelope"></i>
+            <span>correo@correo.com</span>
         </div>
-
+        <br>
         <!-- Sección de bienvenida -->
         <div class="content">
             <div class="welcome-section">
-                <h1 class="mb-4">Bienvenidos a Mi Software</h1>
-                <p class="mb-4">Este es mi software, diseñado para ofrecer soluciones avanzadas en monitoreo, gestión y análisis de datos. Navega a través del menú para explorar todas las funcionalidades que hemos implementado para facilitar tu trabajo.</p>
-                <a href="inicio.html" class="btn btn-primary btn-lg">Comenzar</a>
+                <h1 style="color: #6c757d;">ServPred</h1>
+                <p class="mb-4">Software, diseñado para ofrecer soluciones avanzadas en monitoreo predictivo, gestiónes de almacenamiento y análisis de datos.</p>
+                <br>
+                <a href="monitoreo.html" class="btn btn-secondary btn-lg">Comenzar</a>
             </div>
         </div>
     </div>
-
-    <!-- Vinculación de Bootstrap JS (opcional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

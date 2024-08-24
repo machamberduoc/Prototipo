@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide {
+            width: 250px;
+            background-color: #ffc107;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: #6c757d;
+        }
+        .slide h2 {
+            margin-bottom: 20px;
+        }
+        .slide a {
+            padding: 15px 10px;
+            margin: 5px 0;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .slide a:hover {
+            background-color: #6c757d;
+        }
+        .slide a.monit {
+            background-color: #ffc107;
+        }
+        .slide a.monit:hover {
+            background-color: #6c757d;
+        }
+        .slide a.logout {
+            margin-top: auto;
+            background-color: #ffc107;
+        }
+        .slide a.logout:hover {
+            background-color: #6c757d;
+        }
+        .corr {
+            flex: 1;
+            padding: 100px;
+            overflow-y: auto;
+        }
+        .corr h1 {
+            margin-top: 0;
+            font-size: 10px;
+            color: white;
+        }
+        .corr p {
+            color: #6c757d;
+        }
+        .head {
+            background-color: white;
+            color: white;
+            padding: 15px;
+            text-align: right;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 290px;
+            z-index: 1000;
+            display: flex;
+            align-items:  center;
+            justify-content:  flex-end;
+        }
+        .head img {
+            vertical-align: middle;
+            border-radius:  50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .head span{
+            font-size: 14px;
+            margin-right: 10px;
+            color: #6c757d;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 150px; /* Altura reducida para móviles */
+        }
+        .corr i {
+            color: #6c757d;
+            padding: 10px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <h2>ServPred</h2>
+        <a href="dashboard.html">Inicio</a>
+        <a href="menu.html" class="monit">Menu</a>
+        <a href="monitoreo.html">Monitoreo</a>
+        <a href="auditoria.html">Auditoria</a>
+        <a href="analisisdatos.html">Analisis de datos</a>
+        <a href="recomendaciones.html">Recomendaciones</a>
+        <a href="login.html" class="logout">Cerrar Sesión</a>
+    </div>
+    <div class="corr"> 
+        <div class="head">
+            <i class="fas fa-envelope"></i>
+            <span>correo@correo.com</span>
+        </div>
+        <div class="content-area p-4 pt-5 mt-5">
+            <h2 class="mb-4" style="color: #6c757d;">Buscar Servidor</h2>
+            <!-- Área de búsqueda -->
+            <div class="mb-4 form-section">
+                <input type="text" class="form-control" placeholder="Buscar servidor..." id="searchInput">
+            </div> 
+            <br>
+             <!-- Tabla de Espacio en Disco -->
+             <div class="card mb-4">
+                <div class="card-body table-container" style="color: #6c757d;">
+                    <h5 class="card-title" style="color: #6c757d;">Servidor</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="color: #6c757d;">id</th>
+                                <th style="color: #6c757d;">Nombre Servidor</th>
+                                <th style="color: #6c757d;">Fecha</th>
+                                <th style="color: #6c757d;">Nombre de Disco</th>
+                                <th style="color: #6c757d;">Total Espacio</th>
+                                <th style="color: #6c757d;">MG Libres</th>
+                                <th style="color: #6c757d;">Uso</th>
+                                <th style="color: #6c757d;">Libre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí puedes agregar filas dinámicamente usando JavaScript -->
+                            <tr>
+                                <td style="color: #6c757d;">137467364</td>
+                                <td style="color: #6c757d;">Servidor lpm-1</td>
+                                <td style="color: #6c757d;">2024-08-22 14:30</td>
+                                <td style="color: #6c757d;">C:</td>
+                                <td style="color: #6c757d;">2087658</td>
+                                <td style="color: #6c757d;">1237866</td>
+                                <td style="color: #6c757d;">37</td>
+                                <td style="color: #6c757d;">20</td>
+                            </tr>
+                            
+                            <!-- Más filas aquí -->
+                            <tr>
+                                <td style="color: #6c757d;">125456345</td>
+                                <td style="color: #6c757d;">Servidor 2pm-2</td>
+                                <td style="color: #6c757d;">2024-09-24 16:20</td>
+                                <td style="color: #6c757d;">D:</td>
+                                <td style="color: #6c757d;">2137777</td>
+                                <td style="color: #6c757d;">1235666</td>
+                                <td style="color: #6c757d;">27</td>
+                                <td style="color: #6c757d;">30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <!-- Contenido desplazable -->
+        <div class="pt-5 mt-5">
+                <!-- Gráficos y Tablas -->
+                <div class="row">
+                    <!-- Gráfico de Espacio en Disco Total -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #6c757d;">Espacio en Disco Total</h5>
+                                <div class="chart-container">
+                                    <canvas id="chart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gráfico de Espacio Usado vs Libre -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #6c757d;">Espacio Usado vs Libre</h5>
+                                <div class="chart-container">
+                                    <canvas id="chart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Registrar Reporte de Desperfectos -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #6c757d;">Matriz Comparativa KPI y Regresion Lineal</h5>             
+            <form>        
+                <div class="container mt-4">
+                    <!-- Título -->
+                <h1 class="mb-4">Análisis de Datos</h1>
+              
+                <!-- Tabs de Navegación -->
+                <ul class="nav nav-tabs" id="analysisTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Resumen General</button>
+                  </li>
+                  <!-- Otros tabs aquí -->
+                </ul>
+              
+                <!-- Contenido de las Tabs -->
+                <div class="tab-content mt-4" id="analysisTabsContent">
+                  
+                  <!-- Resumen General -->
+                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                    <div class="row">
+                      <!-- Gráfico de KPI -->
+                      <div class="col-md-6">
+                        <div class="card p-3 mb-4">
+                            <div class="mb-3">
+                                <label for="forecastPeriod" class="form-label">Seleccionar Período de Predicción</label>
+                                <select id="forecastPeriod" class="form-select">
+                                  <option value="3">3 Meses</option>
+                                  <option value="6">6 Meses</option>
+                                  <option value="9">9 Meses</option>
+                                </select>
+                              </div>
+                          <canvas id="kpiChart"></canvas>
+                        </div>
+                      </div>
+              
+                      <!-- Gráfico de Regresión Lineal -->
+                      <div class="col-md-6">
+                        <div class="card p-3 mb-4">
+                          <!-- Selección de Meses para Predicciones -->
+                          <div class="mb-3">
+                            <label for="forecastPeriod" class="form-label">Seleccionar Período de Predicción</label>
+                            <select id="forecastPeriod" class="form-select">
+                              <option value="3">3 Meses</option>
+                              <option value="6">6 Meses</option>
+                              <option value="9">9 Meses</option>
+                            </select>
+                          </div>
+                          <canvas id="linearRegressionChart"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+              
+              <!-- Bootstrap JS and dependencies -->
+              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <script>
+                // Datos de ejemplo para el gráfico de KPI
+                const kpiData = {
+                  labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+                  datasets: [{
+                    label: 'KPI 1',
+                    data: [65, 59, 80, 81, 56, 55],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                  }, {
+                    label: 'KPI 2',
+                    data: [28, 48, 40, 19, 86, 27],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                  }]
+                };
+              
+                // Configuración del gráfico de KPI
+                const kpiConfig = {
+                  type: 'bar',
+                  data: kpiData,
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                };
+              
+                // Renderizar el gráfico de KPI
+                const kpiChart = new Chart(
+                  document.getElementById('kpiChart'),
+                  kpiConfig
+                );
+              
+                // Datos de ejemplo para el gráfico de Regresión Lineal
+                const regressionData = {
+                  labels: [0, 1, 2, 3, 4, 5, 6],
+                  datasets: [{
+                    label: 'Tendencia de Uso',
+                    data: [3, 6, 9, 12, 15, 18, 21],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: true,
+                    tension: 0.1
+                  }]
+                };
+              
+                // Configuración del gráfico de Regresión Lineal
+                const regressionConfig = {
+                  type: 'line',
+                  data: regressionData,
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                };
+              
+                // Renderizar el gráfico de Regresión Lineal
+                const regressionChart = new Chart(
+                  document.getElementById('linearRegressionChart'),
+                  regressionConfig
+                );
+              
+                // Manejar la selección de períodos para futuras predicciones
+                document.getElementById('forecastPeriod').addEventListener('change', function() {
+                  const selectedValue = this.value;
+                  console.log('Período seleccionado para predicciones:', selectedValue);
+                  // Aquí puedes añadir lógica para actualizar el gráfico de regresión lineal
+                  // basado en el período seleccionado.
+                });
+              </script>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vinculación de JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.onload = function() {
+            // Gráfico de Espacio en Disco Total
+            var ctx1 = document.getElementById('chart1').getContext('2d');
+            var chart1 = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Disco A', 'Disco B', 'Disco C'],
+                    datasets: [{
+                        label: 'Espacio Total',
+                        data: [500, 1000, 750],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Gráfico de Espacio Usado vs Libre
+            var ctx2 = document.getElementById('chart2').getContext('2d');
+            var chart2 = new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: ['Espacio Usado', 'Espacio Libre'],
+                    datasets: [{
+                        label: 'Espacio Usado vs Libre',
+                        data: [300, 200],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        };
+
+        function exportToPDF() {
+            // Aquí puedes implementar la función para exportar a PDF
+            alert('Función para exportar a PDF aún no implementada.');
+        }
+    </script>
+    </div>
+</body>
+</html>
