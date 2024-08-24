@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Document</title>
     <style>
         body {
@@ -15,11 +18,11 @@
         }
         .slide {
             width: 250px;
-            background-color: white;
+            background-color: #ffc107;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            color: black;
+            color: #6c757d;
         }
         .slide h2 {
             margin-bottom: 20px;
@@ -27,38 +30,42 @@
         .slide a {
             padding: 15px 10px;
             margin: 5px 0;
-            color: black;
+            color: white;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: background-color 0.9s;
         }
         .slide a:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.monit {
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.monit:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.logout {
             margin-top: auto;
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.logout:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .corr {
             flex: 1;
             padding: 100px;
             overflow-y: auto;
         }
+        .corr i { 
+            color: #6c757d;
+            padding: 10px;
+        }
         .corr h1 {
             margin-top: 0;
-            font-size: 10px;
-            color: white;
+            font-size: 40px;
+            color: #6c757d;
         }
         .corr p {
-            color: grey;
+            color: #6c757d;
         }
         .head {
             background-color: white;
@@ -84,25 +91,34 @@
         .head span{
             font-size: 14px;
             margin-right: 10px;
-            color: black;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
     <div class="slide">
-        <h2>Logo</h2>
+        <h2>ServPred</h2>
         <a href="monitoreo.html" class="monit">Monitoreo</a>
         <a href="acciones.html">Acciones</a>
         <a href="auditoria.html">Auditoria</a>
         <a href="reportes.html">Reportes</a>
-        <a href="recomendaciones.html">recomendaciones</a>
+        <a href="recomendaciones.html">Recomendaciones</a>
         <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
 
     <div class="corr"> 
         <div class="head">
-            <img src="img/perfil.png" alt="">
+            <i class="fas fa-envelope"></i>
             <span>correo@correo.com</span>
+        </div>
+        
+        <!-- Sección de bienvenida -->
+        <div class="content">
+            <div class="welcome-section">
+                <h1 class="mb-4">Bienvenidos a Mi Software</h1>
+                <p class="mb-4">Este es mi software, diseñado para ofrecer soluciones avanzadas en monitoreo, gestión y análisis de datos. Navega a través del menú para explorar todas las funcionalidades que hemos implementado para facilitar tu trabajo.</p>
+                <a href="monitoreo.html" class="btn btn-secondary btn-lg">Comenzar</a>
+            </div>
         </div>
     </div>
 </body>

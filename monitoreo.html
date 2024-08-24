@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vinculación de Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
     <style>
         body {
@@ -15,11 +20,11 @@
         }
         .slide {
             width: 250px;
-            background-color: white;
+            background-color:#ffc107;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            color: black;
+            color: #6c757d;
         }
         .slide h2 {
             margin-bottom: 20px;
@@ -27,25 +32,25 @@
         .slide a {
             padding: 15px 10px;
             margin: 5px 0;
-            color: black;
+            color: white;
             text-decoration: none;
             transition: background-color 0.3s;
         }
         .slide a:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.monit {
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.monit:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.logout {
             margin-top: auto;
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.logout:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .corr {
             flex: 1;
@@ -58,7 +63,7 @@
             color: white;
         }
         .corr p {
-            color: grey;
+            color: #6c757d;
         }
         .head {
             background-color: white;
@@ -84,48 +89,207 @@
         .head span{
             font-size: 14px;
             margin-right: 10px;
-            color: black;
+            color: #6c757d;
         }
-        .squares {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            justify-content: center;
-            height: calc(100vh - 100px);
-            padding-left: 40px;
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 150px; /* Altura reducida para móviles */
         }
-        .square {
-            width: 230px;
-            height: 250px;
-            background-color: grey;
-            align-items: center;
-            justify-content: center;
+        .corr i {
+            color: #6c757d;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
     <div class="slide">
-        <h2>Logo</h2>
+        <h2>ServPred</h2>
         <a href="monitoreo.html" class="monit">Monitoreo</a>
         <a href="acciones.html">Acciones</a>
         <a href="auditoria.html">Auditoria</a>
         <a href="reportes.html">Reportes</a>
-        <a href="recomendaciones.html">recomendaciones</a>
+        <a href="recomendaciones.html">Recomendaciones</a>
         <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
 
     <div class="corr"> 
         <div class="head">
-            <img src="img/perfil.png" alt="">
+            <i class="fas fa-envelope"></i>
             <span>correo@correo.com</span>
         </div>
-        <div class="squares">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
+         <!-- Contenido principal -->
+         <div class="flex-grow-1 pt-5 mt-5">
+            <!-- Mini Dashboard -->
+            <div class="container">
+                <h3 class="mb-4">Monitoreo</h3>
+                <div class="scrollable-cards">
+                    <div class="row">
+                        <!-- Gráfico 1 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Usuarios Activos</h5>
+                                    <div class="chart-container">
+                                        <canvas id="usuariosActivosChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Gráfico 2 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Almacenamiento</h5>
+                                    <div class="chart-container">
+                                        <canvas id="ventasMesChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Gráfico 3 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Almacenamiento A</h5>
+                                    <div class="chart-container">
+                                        <canvas id="comentariosChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta larga abajo -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Frecuencia de Eventos</h5>
+                                    <div class="chart-container">
+                                        <canvas id="frecuenciaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Vinculación de Bootstrap JS (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Configuración de gráficos -->
+    <script>
+        // Gráfico de Usuarios Activos
+        const usuariosActivosCtx = document.getElementById('usuariosActivosChart').getContext('2d');
+        new Chart(usuariosActivosCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+                datasets: [{
+                    label: 'Usuarios Activos',
+                    data: [50, 60, 70, 65, 85],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Ventas del Mes
+        const ventasMesCtx = document.getElementById('ventasMesChart').getContext('2d');
+        new Chart(ventasMesCtx, {
+            type: 'line',
+            data: {
+                labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                datasets: [{
+                    label: 'Ventas del Mes',
+                    data: [2000, 3000, 2500, 4000],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Nuevos Comentarios (Pie)
+        const comentariosCtx = document.getElementById('comentariosChart').getContext('2d');
+        new Chart(comentariosCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Positivos', 'Negativos'],
+                datasets: [{
+                    label: 'Nuevos Comentarios',
+                    data: [30, 15, 10],
+                    backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Frecuencia de Eventos (Líneas)
+        const frecuenciaCtx = document.getElementById('frecuenciaChart').getContext('2d');
+        new Chart(frecuenciaCtx, {
+            type: 'line',
+            data: {
+                labels: ['Evento A', 'Evento B', 'Evento C', 'Evento D', 'Evento E'],
+                datasets: [{
+                    label: 'Frecuencia de Eventos',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    </div>
 </body>
 </html>

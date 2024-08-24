@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Document</title>
     <style>
         body {
@@ -15,11 +17,11 @@
         }
         .slide {
             width: 250px;
-            background-color: white;
+            background-color: #ffc107;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            color: black;
+            color: #6c757d;
         }
         .slide h2 {
             margin-bottom: 20px;
@@ -27,25 +29,25 @@
         .slide a {
             padding: 15px 10px;
             margin: 5px 0;
-            color: black;
+            color: white;
             text-decoration: none;
             transition: background-color 0.3s;
         }
         .slide a:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.monit {
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.monit:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.logout {
             margin-top: auto;
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.logout:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .corr {
             flex: 1;
@@ -58,7 +60,7 @@
             color: white;
         }
         .corr p {
-            color: grey;
+            color: #6c757d;
         }
         .head {
             background-color: white;
@@ -84,7 +86,16 @@
         .head span{
             font-size: 14px;
             margin-right: 10px;
-            color: black;
+            color: #6c757d;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 150px; /* Altura reducida para móviles */
+        }
+        .corr i {
+            color: #6c757d;
+            padding: 10px;
         }
     </style>
 </head>
@@ -95,15 +106,202 @@
         <a href="acciones.html">Acciones</a>
         <a href="auditoria.html">Auditoria</a>
         <a href="reportes.html">Reportes</a>
-        <a href="recomendaciones.html">recomendaciones</a>
+        <a href="recomendaciones.html">Recomendaciones</a>
         <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
 
     <div class="corr"> 
         <div class="head">
-            <img src="img/perfil.png" alt="">
+            <i class="fas fa-envelope"></i>
             <span>correo@correo.com</span>
         </div>
+        <!-- Contenido desplazable -->
+        <div class="pt-5 mt-5">
+            <!-- Sección de Reportes -->
+            <div class="container">
+                <h1 class="mb-4">Reportes de Espacio en Disco</h1>
+
+                <!-- Filtros -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fechaInicio">Fecha de Inicio</label>
+                            <input type="date" class="form-control" id="fechaInicio">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="fechaFin">Fecha de Fin</label>
+                            <input type="date" class="form-control" id="fechaFin">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="servidor">Servidor</label>
+                            <select class="form-select" id="servidor">
+                                <option value="">Todos</option>
+                                <option value="servidor1">Servidor 1</option>
+                                <option value="servidor2">Servidor 2</option>
+                                <option value="servidor3">Servidor 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button class="btn btn-secondary">Aplicar Filtros</button>
+                    </div>
+                </div>
+
+                <!-- Gráficos y Tablas -->
+                <div class="row">
+                    <!-- Gráfico de Espacio en Disco Total -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Espacio en Disco Total</h5>
+                                <div class="chart-container">
+                                    <canvas id="chart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de Espacio Usado vs Libre -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Espacio Usado vs Libre</h5>
+                                <div class="chart-container">
+                                    <canvas id="chart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de Espacio en Disco -->
+                <div class="card mb-4">
+                    <div class="card-body table-container">
+                        <h5 class="card-title">Tabla de Espacio en Disco</h5>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Servidor</th>
+                                    <th>Disco</th>
+                                    <th>Espacio Total</th>
+                                    <th>Espacio Usado</th>
+                                    <th>Espacio Libre</th>
+                                    <th>Fecha de Última Actualización</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Aquí puedes agregar filas dinámicamente usando JavaScript -->
+                                <tr>
+                                    <td>Servidor 1</td>
+                                    <td>Disco A</td>
+                                    <td>500 GB</td>
+                                    <td>200 GB</td>
+                                    <td>300 GB</td>
+                                    <td>2024-08-22</td>
+                                </tr>
+                                <tr>
+                                    <td>Servidor 1</td>
+                                    <td>Disco B</td>
+                                    <td>1 TB</td>
+                                    <td>600 GB</td>
+                                    <td>400 GB</td>
+                                    <td>2024-08-22</td>
+                                </tr>
+                                <!-- Más filas aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Registrar Reporte de Desperfectos -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Registrar Reporte de Desperfectos</h5>
+                        <form>
+                            <div class="mb-3">
+                                <label for="servidorReporte" class="form-label">Servidor</label>
+                                <input type="text" class="form-control" id="servidorReporte">
+                            </div>
+                            <div class="mb-3">
+                                <label for="discoReporte" class="form-label">Disco</label>
+                                <input type="text" class="form-control" id="discoReporte">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcionReporte" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcionReporte" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-secondary">Registrar Reporte</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Vinculación de JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.onload = function() {
+            // Gráfico de Espacio en Disco Total
+            var ctx1 = document.getElementById('chart1').getContext('2d');
+            var chart1 = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: ['Disco A', 'Disco B', 'Disco C'],
+                    datasets: [{
+                        label: 'Espacio Total',
+                        data: [500, 1000, 750],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Gráfico de Espacio Usado vs Libre
+            var ctx2 = document.getElementById('chart2').getContext('2d');
+            var chart2 = new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: ['Espacio Usado', 'Espacio Libre'],
+                    datasets: [{
+                        label: 'Espacio Usado vs Libre',
+                        data: [300, 200],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        };
+
+        function exportToPDF() {
+            // Aquí puedes implementar la función para exportar a PDF
+            alert('Función para exportar a PDF aún no implementada.');
+        }
+    </script>
+    </div>
+    
 </body>
 </html>

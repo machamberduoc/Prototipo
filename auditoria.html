@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Document</title>
     <style>
         body {
@@ -15,11 +18,11 @@
         }
         .slide {
             width: 250px;
-            background-color: white;
+            background-color: #ffc107;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            color: black;
+            color: #6c757d;
         }
         .slide h2 {
             margin-bottom: 20px;
@@ -27,25 +30,25 @@
         .slide a {
             padding: 15px 10px;
             margin: 5px 0;
-            color: black;
+            color: white;
             text-decoration: none;
             transition: background-color 0.3s;
         }
         .slide a:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.monit {
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.monit:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .slide a.logout {
             margin-top: auto;
-            background-color: white;
+            background-color: #ffc107;
         }
         .slide a.logout:hover {
-            background-color: grey;
+            background-color: #6c757d;
         }
         .corr {
             flex: 1;
@@ -58,7 +61,7 @@
             color: white;
         }
         .corr p {
-            color: grey;
+            color: #6c757d;
         }
         .head {
             background-color: white;
@@ -84,67 +87,120 @@
         .head span{
             font-size: 14px;
             margin-right: 10px;
-            color: black;
+            color: #6c757d;
         }
-        .cont {
-            display: flex;
-            flex-direction: column;
-            margin: 0 auto;
-            padding-top: 20px;
-        }
-        .row {
-            display: flex;
-            justify-content:  space-between;
-            margin-bottom: 20px;
-        }
-        .box {
-            background-color: #ddd;
-            width: 200px;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .large {
-            background-color: #ddd;
-            width: 100%;
-            height: 150px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .corr i {
+            color: #6c757d;
+            padding: 10px;
         }
         
     </style>
 </head>
 <body>
     <div class="slide">
-        <h2>Logo</h2>
+        <h2>ServPred</h2>
         <a href="monitoreo.html" class="monit">Monitoreo</a>
         <a href="acciones.html">Acciones</a>
         <a href="auditoria.html">Auditoria</a>
         <a href="reportes.html">Reportes</a>
-        <a href="recomendaciones.html">recomendaciones</a>
+        <a href="recomendaciones.html">Recomendaciones</a>
         <a href="login.html" class="logout">Cerrar Sesión</a>
     </div>
 
     <div class="corr"> 
         <div class="head">
-            <img src="img/perfil.png" alt="">
+            <i class="fas fa-envelope"></i>
             <span>correo@correo.com</span>
         </div>
-        <div class="cont">
-            <div class="large"></div>
-            <div class="row">
-                <div class="box"></div>
-                <div class="box"></div>
+        <!-- Contenido principal -->
+        <div class="content-area p-4 pt-5 mt-5">
+            <h1>Registro de Auditoría</h1>
+
+            <!-- Área de búsqueda -->
+            <div class="mb-4 form-section">
+                <input type="text" class="form-control" placeholder="Buscar en los registros..." id="searchInput">
             </div>
-            <div class="row">
-                <div class="box"></div>
-                <div class="box"></div>
+
+            <!-- Sección para Registro de Actividades Automáticas -->
+            <div class="form-section">
+                <h2>Registro de Actividades Automáticas</h2>
+                <p>Asegúrate de que todas las acciones relevantes en el sistema se registren automáticamente. Esto incluye cambios en los datos, accesos a la aplicación y eventos importantes.</p>
             </div>
-            <div class="large"></div>
+
+            <!-- Interfaz para Reportes Manuales -->
+            <div class="form-section">
+                <h2>Interfaz para Reportes Manuales</h2>
+                <p>Desarrolla una interfaz que permita a los usuarios, especialmente a los administradores, agregar manualmente reportes o comentarios adicionales relacionados con la auditoría.</p>
+                <form>
+                    <div class="mb-3">
+                        <label for="reportTitle" class="form-label">Título del Reporte</label>
+                        <input type="text" class="form-control" id="reportTitle" placeholder="Título del reporte">
+                    </div>
+                    <div class="mb-3">
+                        <label for="reportDetails" class="form-label">Detalles del Reporte</label>
+                        <textarea class="form-control" id="reportDetails" rows="4" placeholder="Detalles del reporte"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Agregar Reporte</button>
+                </form>
+            </div>
+
+            <!-- Visualización y Consulta de Auditoría -->
+            <div class="form-section">
+                <h2>Visualización y Consulta de Auditoría</h2>
+                <p>Implementa funcionalidades para visualizar y consultar los registros de auditoría. Esto puede incluir filtros por fecha, tipo de evento, usuario, etc.</p>
+                <form>
+                    <div class="mb-3">
+                        <label for="filterDate" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="filterDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="filterEvent" class="form-label">Tipo de Evento</label>
+                        <select class="form-select" id="filterEvent">
+                            <option value="">Todos</option>
+                            <option value="login">Login</option>
+                            <option value="modificacion">Modificación</option>
+                            <option value="eliminacion">Eliminación</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Filtrar</button>
+                </form>
+            </div>
+
+            <!-- Tabla de auditoría -->
+            <div class="form-section">
+                <h2>Registros de Auditoría</h2>
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Usuario</th>
+                            <th>Acción</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody id="auditTableBody">
+                        <!-- Aquí se agregarán las filas de auditoría dinámicamente -->
+                        <tr>
+                            <td>1</td>
+                            <td>2024-08-22 14:30</td>
+                            <td>admin</td>
+                            <td>Login</td>
+                            <td>Inicio de sesión exitoso</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2024-08-22 14:45</td>
+                            <td>usuario123</td>
+                            <td>Modificación</td>
+                            <td>Cambio en los datos de usuario</td>
+                        </tr>
+                        <!-- Más registros aquí -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
