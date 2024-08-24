@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Vinculación de Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -94,7 +93,7 @@
         .chart-container {
             position: relative;
             width: 100%;
-            height: 150px; /* Altura reducida para móviles */
+            height: 150px; 
         }
         .corr i {
             color: #6c757d;
@@ -119,14 +118,11 @@
             <i class="fas fa-envelope"></i>
             <span>correo@correo.com</span>
         </div>
-         <!-- Contenido principal -->
          <div class="flex-grow-1 pt-5 mt-5">
-            <!-- Mini Dashboard -->
             <div class="container">
                 <h2 class="mb-4" style="color: #6c757d;">Monitoreo</h2>
                 <div class="scrollable-cards">
                     <div class="row">
-                        <!-- Gráfico 1 -->
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <div class="card-body">
@@ -137,7 +133,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Gráfico 2 -->
+
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <div class="card-body">
@@ -148,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Gráfico 3 -->
+
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <div class="card-body">
@@ -161,7 +157,7 @@
                         </div>
                     </div>
                     
-                    <!-- Tarjeta larga abajo -->
+
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
@@ -179,12 +175,12 @@
         </div>
     </div>
 
-    <!-- Vinculación de Bootstrap JS (opcional) -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Configuración de gráficos -->
+
     <script>
-        // Gráfico de Usuarios Activos
+
         const usuariosActivosCtx = document.getElementById('usuariosActivosChart').getContext('2d');
         new Chart(usuariosActivosCtx, {
             type: 'bar',
@@ -209,7 +205,7 @@
             }
         });
 
-        // Gráfico de Ventas del Mes
+
         const ventasMesCtx = document.getElementById('ventasMesChart').getContext('2d');
         new Chart(ventasMesCtx, {
             type: 'line',
@@ -235,7 +231,7 @@
             }
         });
 
-        // Gráfico de Nuevos Comentarios (Pie)
+
         const comentariosCtx = document.getElementById('comentariosChart').getContext('2d');
         new Chart(comentariosCtx, {
             type: 'pie',
@@ -265,7 +261,7 @@
             }
         });
 
-        // Gráfico de Frecuencia de Eventos (Líneas)
+
         const frecuenciaCtx = document.getElementById('frecuenciaChart').getContext('2d');
         new Chart(frecuenciaCtx, {
             type: 'line',
